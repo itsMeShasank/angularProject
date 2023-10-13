@@ -1,0 +1,39 @@
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    background: #424242;
+    color: beige;
+    margin-top: 0%;
+}
+.spacer {
+    flex: 1 1 auto
+}
+
+.navBar {
+    height: fit-content;
+    background-color: #231F20;
+}
+.example-icon {
+    background-color: #FBFAFA;
+}
+
+.menu-items a{
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    color:rgb(106, 109, 109);
+    &:hover{
+        text-decoration: underline;
+    }
+    &.active{
+        color: beige;
+        text-decoration: underline;
+    }
+}
+
+.company-name {
+    color: beige;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 2%;
+}

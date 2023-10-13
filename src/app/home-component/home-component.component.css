@@ -1,0 +1,21 @@
+
+.container {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+  }
+
+.image-column {
+    height: 500%;
+    width: 500%;
+}
+.content-column {
+    
+    padding-right: 30px;
+    text-align: right;
+    margin-top: 20%;
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+ 

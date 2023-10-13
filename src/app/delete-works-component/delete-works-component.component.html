@@ -1,0 +1,12 @@
+<div class="table-container">
+    <table>
+        <tr>
+            <th>information</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor = "let data of storedData; index as i">
+            <td>{{ data.details }}</td>
+            <td><button type="submit" class="btn" (click) = "onDelete(i)">Delete</button></td>
+        </tr>
+    </table>
+</div>
