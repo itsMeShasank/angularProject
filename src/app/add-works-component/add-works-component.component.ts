@@ -1,44 +1,26 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Content } from './Content';
-import { LocalStorage } from './LocalStorage';
-import { WorksComponent } from '../works-component/works-component.component';
+import {Component} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Work} from "../Work";
+import {WorksService} from "../service/works.service";
 
 @Component({
   selector: 'app-add-works-component',
   standalone: true,
-  imports: [ ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './add-works-component.component.html',
   styleUrls: ['./add-works-component.component.css']
 })
 export class AddWorksComponent {
+  workObject: Work = new Work();
 
-  contentInfo: string;
-  author: string;
-  details: Content[];
-
-  storage_Object = new LocalStorage();
-
-  constructor() {
-    this.details=[],
-    this.contentInfo="",
-    this.author=""
+  constructor(private workService: WorksService) {
   }
 
+  submitContent() {
+    this.workService.saveContent(this.workObject).subscribe( data =>{
+        console.log(data);
+      },
+      error => console.log(error));
+  }
 
-   applyForm = new FormGroup({
-    data: new FormControl(''),
-    author: new FormControl('')
-    });
-
-    submitContent() {
-      this.contentInfo = this.applyForm.value.data ?? ' ';
-      this.details.push(new Content(this.contentInfo));
-      this.storage_Object.addContentToStroage(this.author,this.contentInfo);
-      console.log(this.details);
-    }
-
-    get getDetailsList(): Content[] {
-      return this.details;
-    }
 }

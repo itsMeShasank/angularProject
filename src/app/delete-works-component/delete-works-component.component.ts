@@ -1,26 +1,38 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { LocalStorage } from '../add-works-component/LocalStorage';
 import { Content } from '../add-works-component/Content';
+import {WorksService} from "../service/works.service";
+import {Work} from "../Work";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-delete-works-component',
   templateUrl: './delete-works-component.component.html',
   styleUrls: ['./delete-works-component.component.css']
 })
-export class DeleteWorksComponent {
+export class DeleteWorksComponent implements OnInit{
 
-  storage_Object: LocalStorage;
+  works: Work[] = [];
 
-  storedData: Content[];
 
-  constructor(){
-    this.storage_Object = new LocalStorage();
-    this.storedData = this.storage_Object.getContentFromStorage;
+  ngOnInit(): void {
+    this.getWorks();
+  }
+
+  constructor(private workService: WorksService,
+              private router: Router){
   }
 
   onDelete(index: number) {
-    this.storedData.splice(index,1)
-    this.storage_Object.updateContent(this.storedData)
+    console.log(index);
+    this.workService.deleteContent(index).subscribe(data => {
+      this.getWorks();
+    },error => console.log(error));
   }
-  
+
+  private getWorks() {
+    this.workService.getAllWorks().subscribe(data => {
+      this.works = data;
+    });
+  }
 }

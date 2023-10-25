@@ -9,16 +9,16 @@ export class LocalStorage {
         this.storedData = JSON.parse(localStorage.getItem(this.localStorageKey) || '[]',(key,value) => {
             return value;
         });
-    
+
     }
 
-    addContentToStroage(name:string,content:string) {
+    addContentToStorage(content:string) {
         this.storedData.push(new Content(content));
         localStorage.setItem(this.localStorageKey, JSON.stringify(this.storedData));
     }
 
     get getContentFromStorage(): Content[] {
-        
+
         return this.storedData;
     }
 

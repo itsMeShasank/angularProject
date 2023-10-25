@@ -1,12 +1,9 @@
 
 <div class="form-container">
-    <form [formGroup]='applyForm' (submit)="submitContent()">
-
-        <label for="author">Author</label>
-        <input type="text" id="author" formControlName="author" placeholder="Please enter your name"/>
+    <form (submit)="submitContent()">
 
         <label for="content" >content</label>
-        <input type="text" id="content" formControlName="data" placeholder="Please enter your information"/>
+        <input type="text" id="content" [(ngModel)]="workObject.content" name="content" placeholder="Please enter your information"/>
         <button type="submit" class="primary">Save content</button>
     </form>
 </div>
